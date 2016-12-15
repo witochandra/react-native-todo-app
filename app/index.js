@@ -4,23 +4,24 @@ import {
   View
 } from 'react-native'
 
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
 import styles from './styles'
+import reducer from './reducer'
+
+import { Todos } from './todos'
+
+const store = createStore(reducer)
 
 class TodoApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Todos />
+        </View>
+      </Provider>
     )
   }
 }
