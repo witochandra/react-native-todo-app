@@ -4,12 +4,15 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#F5FCFF'
   },
   containerTodo: {
     height: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  completedTodo: {
+    textDecorationLine: 'line-through'
   }
 })
 
