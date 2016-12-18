@@ -1,45 +1,45 @@
 import React, { Component } from 'react'
 import {
   Text,
-  View
+  View,
+  ListView
 } from 'react-native'
-
-import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Button,
-  List
-} from 'native-base'
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import { connect } from 'react-redux'
+import { Actions } from 'react-native-router-flux'
 
 import TodoCell from './TodoCell'
 import styles from './styles'
 
-let Todos = ({
-  todos
-}) => {
-  return (
-    <Container style={styles.container}>
-      <Header iconRight='true'>
-        <Title>Todos</Title>
-        <Button transparent>
-          <Icon name='add' size={24} />
-        </Button>
-      </Header>
-      <Content>
-        <List
-          style={{paddingTop: 5}}
-          dataArray={todos}
-          renderRow={(todo) => <TodoCell todo={todo}/>}
-        />
-      </Content>
-    </Container>
-  )
+class Todos extends Component {
+
+  constructor() {
+    super()
+  }
+
+  componentWillMount() {
+    Actions.refresh({
+      title: 'Todos',
+      rightTitle: 'Create',
+      onRight: () => {
+        Actions.pageCreateTodo()
+      }
+    })
+  }
+
+  render() {
+    let todos = this.props.todos
+    const ds = new ListView.DataSource({rowHasChanged: (todo1, todo2) => todo1.title !== todo2.title})
+    return (
+      <ListView
+        style={styles.container}
+        dataSource={ds.cloneWithRows(todos)}
+        renderRow={(todo) => <TodoCell todo={todo}/>}
+      />
+    )
+  }
 }
 
 const mapStateToProps = (state) => {

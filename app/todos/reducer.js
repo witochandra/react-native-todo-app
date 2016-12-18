@@ -3,7 +3,7 @@ import * as t from './actionTypes'
 const initialState = {
   items: [{
     title: 'Buy 5 Eggs',
-    completed: false
+    completed: true
   }]
 }
 
@@ -22,10 +22,13 @@ const todo = (state = undefined, action) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case t.CREATE_TODO:
-      return [
-        ...state.todos,
-        todo(undefined, action)
-      ]
+      return {
+        ...state,
+        items: [
+          ...state.items,
+          todo(undefined, action)
+        ]
+      }
     default:
       return state
   }
