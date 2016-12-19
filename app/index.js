@@ -1,15 +1,20 @@
 import React, { Component } from 'react'
 
-import { createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Scene } from 'react-native-router-flux'
+import createLogger from 'redux-logger';
 
 import styles from './styles'
 import reducer from './reducer'
 
 import { Todos, CreateTodo } from './todos'
 
-const store = createStore(reducer)
+const logger = createLogger()
+const store = createStore(
+  reducer,
+  applyMiddleware(logger)
+)
 
 class TodoApp extends Component {
   render() {

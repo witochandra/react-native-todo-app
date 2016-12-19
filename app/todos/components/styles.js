@@ -21,6 +21,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginLeft: 16,
     marginRight: 16
+  },
+  divider: {
+    marginLeft: 16,
+    marginRight: 0,
+    height: 0.5,
+    backgroundColor: 'gray'
   }
 })
 

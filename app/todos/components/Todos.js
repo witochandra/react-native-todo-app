@@ -36,7 +36,7 @@ class Todos extends Component {
       <ListView
         style={styles.container}
         dataSource={ds.cloneWithRows(todos)}
-        renderRow={(todo) => <TodoCell todo={todo}/>}
+        renderRow={(todo) => <TodoCell todo={todo} needsDivider={todos.indexOf(todo) < todos.length - 1}/>}
       />
     )
   }
