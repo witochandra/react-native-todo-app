@@ -9,7 +9,8 @@ import styles from './styles'
 
 const TodoCell = ({
   todo,
-  needsDivider
+  needsDivider,
+  onClick
 }) => {
   let textStyle = todo.completed ? styles.completedTodo : {}
   let divider = undefined
@@ -17,7 +18,7 @@ const TodoCell = ({
     divider = <View style={styles.divider}></View>
   }
   return (
-    <TouchableHighlight underlayColor='green' onPress={() => console.log('test')}>
+    <TouchableHighlight underlayColor='green' onPress={() => onClick()}>
       <View>
         <View style={styles.containerTodo}>
           <Text style={[textStyle, styles.todoTitle]}>{todo.title}</Text>

@@ -22,6 +22,16 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16
   },
+  containerCompleted: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 16,
+    marginRight: 16
+  },
+  labelCompleted: {
+    flex: 1
+  },
   divider: {
     marginLeft: 16,
     marginRight: 0,

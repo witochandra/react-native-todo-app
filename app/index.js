@@ -8,7 +8,7 @@ import createLogger from 'redux-logger';
 import styles from './styles'
 import reducer from './reducer'
 
-import { Todos, CreateTodo } from './todos'
+import { Todos, CreateTodo, UpdateTodo } from './todos'
 
 const logger = createLogger()
 const store = createStore(
@@ -24,6 +24,7 @@ class TodoApp extends Component {
           <Scene key='root'>
             <Scene key='pageTodos' component={Todos} initial={true} />
             <Scene key='pageCreateTodo' component={CreateTodo} />
+            <Scene key='pageUpdateTodo' component={UpdateTodo} />
           </Scene>
         </Router>
       </Provider>

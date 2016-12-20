@@ -18,6 +18,11 @@ const todo = (state = undefined, action) => {
         title: action.payload.title,
         completed: false
       }
+    case t.UPDATE_TODO:
+      if (state.uuid != action.payload.uuid) {
+        return state
+      }
+      return action.payload
     default:
       return state
   }
@@ -32,6 +37,11 @@ const reducer = (state = initialState, action) => {
           ...state.items,
           todo(undefined, action)
         ]
+      }
+    case t.UPDATE_TODO:
+      return {
+        ...state,
+        items: state.items.map((item) => todo(item, action))
       }
     default:
       return state

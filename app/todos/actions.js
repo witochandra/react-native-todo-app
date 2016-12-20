@@ -8,3 +8,10 @@ export const createTodo = (title) => {
     }
   }
 }
+
+export const updateTodo = (todo) => {
+  return {
+    type: t.UPDATE_TODO,
+    payload: todo
+  }
+}
