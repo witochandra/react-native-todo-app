@@ -3,11 +3,7 @@ import UUID from 'uuid-js'
 import * as t from './actionTypes'
 
 const initialState = {
-  items: [{
-    uuid: UUID.create().toString(),
-    title: 'Buy 5 Eggs',
-    completed: true
-  }]
+  items: []
 }
 
 const todo = (state = undefined, action) => {
